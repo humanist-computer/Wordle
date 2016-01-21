@@ -1,0 +1,25 @@
+<div id="viewer" role="navigation" ng-controller="ViewerCtrl">
+  <div class="simpleDemo">
+    <div ng-repeat="(folderName, folder) in models.folders" class="" data-folder-id="{{folderName}}" ng-click="toggleFolder()">
+      <h3 class="folder-title">List {{folderName}}</h3>
+      <div class="folder-items" ng-include="'simple.html'"></div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="simple.html">
+<ul dnd-list="folder" data-folder-id="{{folderName}}" dnd-inserted="dropRecieveCb(folderName, event, draggedItem)">
+  <li ng-repeat="document in folder"
+    dnd-draggable="document"
+    data-doc-id="{{document._id}}"
+    dnd-moved="folder.splice($index, 1); dropCb(event, folderName)"
+    dnd-effect-allowed="move"
+    dnd-selected="models.selected = document"
+    //dnd-moved="dropCallback(event, index, item, external, folder, 'itemType')"
+    ng-class="{'selected': models.selected === document}"
+  >
+    {{document.title}}
+  </li>
+  <li class="dndPlaceholder" data-document-id="{{draggedItem}}"></li>
+</ul>
+</script>

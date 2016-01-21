@@ -1,0 +1,148 @@
+<!-- Sidebar -->
+<div id="sidebar" role="navigation">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+
+
+  <div id="sidebar-nav">
+    <ul class="nav nav-stacked">
+      <li><a href="http://stackoverflow.com/"> <span class="glyphicon glyphicon-star"></span>Link1</a></li>
+      <li><a href="http://stackoverflow.com/"> <span class="glyphicon glyphicon-cloud"></span>Link2</a></li>
+      <li><a href="http://stackoverflow.com/"> <span class="glyphicon glyphicon-fire"></span>Link3</a></li>
+      <li><a href="http://stackoverflow.com/"> <span class="glyphicon glyphicon-heart"></span>Link4</a></li>
+      <li><a href="http://stackoverflow.com/"> <span class="glyphicon glyphicon-send"></span>Link5</a></li>
+    </ul>
+  </div>
+
+</div>
+<!-- Sidebar End -->
+
+<viewer></viewer>
+
+<div class="container-fluid" style="
+    padding-left: 415px;
+    margin: 0;
+    padding-right: 15px;
+    width: 100%;
+    right: 0;
+    overflow-x: hidden;
+">
+
+  <navbar></navbar>
+
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Generated Model</h3>
+        </div>
+        <div class="panel-body">
+          <pre class="code">{{modelAsJson}}</pre>
+        </div>
+      </div>
+      <div view-source="simple"></div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Nested node template -->
+<!-- <script type="text/ng-template" id="nodes_renderer.html">
+  <div ui-tree-handle class="tree-node tree-node-content">
+    <a class="btn btn-success btn-xs" ng-if="branch.nodes && branch.nodes.length > 0" data-nodrag ng-click="main.toggle(this)"><span
+        class="glyphicon"
+        ng-class="{
+          'glyphicon-chevron-right': collapsed,
+          'glyphicon-chevron-down': !collapsed
+        }"></span>Tog</a>
+    <span>{{branch.nodes.length}}</span>
+    {{branch.title}}
+    <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="main.remove(this)"><span
+        class="glyphicon glyphicon-remove"></span>remove</a>
+    <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="main.newSubItem(this)" style="margin-right: 8px;"><span
+        class="glyphicon glyphicon-plus"></span>new sub item</a>
+  </div>
+  <ol ui-tree-nodes="" ng-model="branch.nodes" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in branch.nodes" ui-tree-node>
+      <div ui-tree-handle>
+        {{node.title}}
+      </div>
+    </li>
+  </ol>
+</script> -->
+
+<!-- <div data-ui-tree="treeOptions" id="tree-root" data-max-depth="2">
+  <ol ui-tree-nodes ng-model="tree" >
+    <li ng-repeat="branch in tree" ui-tree-node ng-include="'nodes_renderer.html'" data-nodrag-enabled></li>
+  </ol>
+</div>
+
+<hr /> -->
+<!--
+<pre class="code">{{ tree | json }}</pre> -->
+
+<!-- <div ui-tree data-max-depth="5">
+  <ol ui-tree-nodes="" ng-model="tree">
+    <li ng-repeat="branch in tree" ui-tree-node>
+      <a ng-click="main.toggle(this)">Toggle</a>
+      <div ui-tree-handle>
+        {{branch.title}}
+      </div>
+
+      <ol ui-tree-nodes="" ng-model="tree" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in branch.nodes" ui-tree-node>
+          <div ui-tree-handle>
+            {{node.title}}
+          </div>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</div> -->
+
+<hr />
+
+<!-- <ol ng-model="main.documents">
+  <li ng-repeat="document in main.documents">
+    <div>
+      {{document.title}}
+    </div>
+  </li>
+</ol> -->
+
+<!-- <header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>'Allo, 'Allo!</h1>
+    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+  </div>
+</header> -->
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Features:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in main.awesomeThings">
+        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+
+<footer></footer>

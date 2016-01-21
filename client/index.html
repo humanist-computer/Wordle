@@ -1,0 +1,286 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(client) app/vendor.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
+      <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
+      <link rel="stylesheet" href="app/app.css">
+      <!-- injector:css -->
+      <!-- endinjector -->
+    <!-- endbuild -->
+    <style type="text/css">
+    .hidden { display: none; }
+    .btn {
+        margin-right: 8px;
+    }
+
+    .angular-ui-tree-handle {
+        background: #f8faff;
+        border: 1px solid #dae2ea;
+        color: #7c9eb2;
+        padding: 10px 10px;
+    }
+
+    .angular-ui-tree-handle:hover {
+        color: #438eb9;
+        background: #f4f6f7;
+        border-color: #dce2e8;
+    }
+
+    .angular-ui-tree-placeholder {
+        background: #f0f9ff;
+        border: 2px dashed #bed2db;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    tr.angular-ui-tree-empty {
+        height:100px
+    }
+
+    .group-title {
+        background-color: #687074 !important;
+        color: #FFF !important;
+    }
+
+
+    /* --- Tree --- */
+    .tree-node {
+        border: 1px solid #dae2ea;
+        background: #f8faff;
+        color: #7c9eb2;
+    }
+
+    .nodrop {
+        background-color: #f2dede;
+    }
+
+    .tree-node-content {
+        margin: 10px;
+    }
+    .tree-handle {
+        padding: 10px;
+        background: #428bca;
+        color: #FFF;
+        margin-right: 10px;
+    }
+
+    .angular-ui-tree-handle:hover {
+    }
+
+    .angular-ui-tree-placeholder {
+        background: #f0f9ff;
+        border: 2px dashed #bed2db;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    /**
+     * For the correct positioning of the placeholder element, the dnd-list and
+     * it's children must have position: relative
+     */
+    .simpleDemo ul[dnd-list],
+    .simpleDemo ul[dnd-list] > li {
+      position: relative;
+    }
+
+    /**
+     * The dnd-list should always have a min-height,
+     * otherwise you can't drop to it once it's empty
+     */
+    .simpleDemo ul[dnd-list] {
+        min-height: 42px;
+        padding-left: 0px;
+        margin-bottom: 0;
+    }
+
+    /**
+     * The dndDraggingSource class will be applied to
+     * the source element of a drag operation. It makes
+     * sense to hide it to give the user the feeling
+     * that he's actually moving it.
+     */
+    .simpleDemo ul[dnd-list] .dndDraggingSource {
+        display: none;
+    }
+
+    /**
+     * An element with .dndPlaceholder class will be
+     * added to the dnd-list while the user is dragging
+     * over it.
+     */
+    .simpleDemo ul[dnd-list] .dndPlaceholder {
+        display: block;
+        background-color: #ddd;
+        min-height: 42px;
+    }
+
+    /**
+     * The dnd-lists's child elements currently MUST have
+     * position: relative. Otherwise we can not determine
+     * whether the mouse pointer is in the upper or lower
+     * half of the element we are dragging over. In other
+     * browsers we can use event.offsetY for this.
+     */
+    .simpleDemo ul[dnd-list] li {
+        background-color: #fff;
+        border: 1px solid #ddd;
+/*        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;*/
+        display: block;
+        border-left: 0;
+        border-right: 0;
+        padding: 10px 30px;
+        color: #333;
+        margin-bottom: -1px;
+    }
+
+    /**
+     * Show selected elements in green
+     */
+    .simpleDemo ul[dnd-list] li.selected {
+        background-color: #dff0d8;
+        color: #3c763d;
+    }
+
+
+
+        #sidebar {
+          background-color: #F8F8F8;
+          color: white;
+          border-right: 1px solid #ccc;
+          height: 100%;
+          padding: 0;
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 65px;
+          z-index: 3000;
+
+    }
+
+    #sidebar-nav {
+        margin-top: 75px;
+    }
+
+        #viewer {
+          background-color: #fff;
+          color: white;
+          border-right: 1px solid #ccc;
+          height: 100%;
+          padding: 0;
+          position: fixed;
+          left: 65px;
+          top: 0;
+          width: 335px;
+          z-index: 3000;
+
+    }
+
+    #sidebar-nav {
+        margin-top: 75px;
+    }
+    .folder-title {
+      color: #666;
+      margin: 0;
+      padding: 15px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .folder-items {
+      -webkit-transition: max-height 0.25s ease;
+      -moz-transition: max-height 0.25s ease;
+      -ms-transition: max-height 0.25s ease;
+      -o-transition: max-height 0.25s ease;
+      transition: max-height 0.25s ease;
+      max-height: 1000px;
+      overflow: hidden;
+    }
+    </style>
+  </head>
+  <body ng-app="wordleApp">
+    <!--[if lt IE 7]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div ui-view=""></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+      <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-validation-match/dist/angular-validation-match.min.js"></script>
+      <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+      <script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+      <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+      <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js(.tmp) app/app.js -->
+      <script src="app/app.js"></script>
+      <!-- injector:js -->
+      <script src="app/admin/admin.module.js"></script>
+      <script src="components/auth/auth.module.js"></script>
+      <script src="components/util/util.module.js"></script>
+      <script src="app/viewer/viewer.directive.js"></script>
+      <script src="app/admin/admin.controller.js"></script>
+      <script src="app/account/account.js"></script>
+      <script src="app/admin/admin.router.js"></script>
+      <script src="app/app.constant.js"></script>
+      <script src="app/documents/documents.service.js"></script>
+      <script src="app/folders/folders.service.js"></script>
+      <script src="app/main/main.controller.js"></script>
+      <script src="app/main/main.js"></script>
+      <script src="app/viewer/viewer.controller.js"></script>
+      <script src="app/account/login/login.controller.js"></script>
+      <script src="app/account/settings/settings.controller.js"></script>
+      <script src="components/auth/auth.service.js"></script>
+      <script src="components/auth/interceptor.service.js"></script>
+      <script src="components/auth/router.decorator.js"></script>
+      <script src="components/auth/user.service.js"></script>
+      <script src="components/footer/footer.directive.js"></script>
+      <script src="components/mongoose-error/mongoose-error.directive.js"></script>
+      <script src="components/navbar/navbar.controller.js"></script>
+      <script src="components/navbar/navbar.directive.js"></script>
+      <script src="components/oauth-buttons/oauth-buttons.controller.js"></script>
+      <script src="components/oauth-buttons/oauth-buttons.directive.js"></script>
+      <script src="app/account/signup/signup.controller.js"></script>
+      <script src="components/util/util.service.js"></script>
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </body>
+</html>
